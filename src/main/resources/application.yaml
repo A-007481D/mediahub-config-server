@@ -8,15 +8,24 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/A-007481D/mediahub-config-server.git
+          uri: https://github.com/A-007481D/mediahub-config-repo.git
           default-label: main
           search-paths: '{application}'
           username: ${GIT_USER}
           password: ${GIT_TOKEN}
           clone-on-start: true
 
-
 eureka:
   client:
     service-url:
       default-zone: ${EUREKA_URL:http://localhost:8761/eureka/}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
